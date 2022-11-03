@@ -1,0 +1,5 @@
+Hello world.
+I am a txt file,
+Made to test the speed of minitalk.
+I hope I can be of some use to Y.
+ 
