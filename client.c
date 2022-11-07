@@ -6,7 +6,7 @@
 /*   By: jbax <jbax@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 14:45:02 by jbax          #+#    #+#                 */
-/*   Updated: 2022/11/03 15:18:50 by jbax          ########   odam.nl         */
+/*   Updated: 2022/11/04 13:47:38 by jbax          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,29 @@ static void	send_end(int id)
 
 static void	send_bits(int id, char const *str)
 {
-	int	i;
-	int	j;
+	int	i[2];
 
 	if (g_stop)
+		ft_putstr_fd("can't recive signial\ncheck the server id\n", 2);
+	if (g_stop)
 		exit(1);
-	i = 0;
-	j = 8;
-	while (str[i])
+	i[0] = 0;
+	while (str[i[0]])
 	{
-		while (j)
+		i[1] = 8;
+		while (i[1])
 		{
 			while (g_stop)
 			{
 			}
 			g_stop = 1;
-			j--;
-			if ((str[i] >> j) & 1)
+			i[1]--;
+			if ((str[i[0]] >> i[1]) & 1)
 				kill(id, SIGUSR2);
 			else
 				kill(id, SIGUSR1);
 		}
-		j = 8;
-		i++;
+		i[0]++;
 	}
 	send_end(id);
 }
@@ -91,6 +91,8 @@ static void	sighandler(int signum)
 		exit(1);
 	}
 }
+		// system("leaks -q client");
+		// system("leaks -q server");
 
 int	main(int argc, char const *argv[])
 {

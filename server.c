@@ -6,24 +6,13 @@
 /*   By: jbax <jbax@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/26 14:45:20 by jbax          #+#    #+#                 */
-/*   Updated: 2022/11/03 15:09:41 by jbax          ########   odam.nl         */
+/*   Updated: 2022/11/04 13:10:03 by jbax          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_talk.h"
 
 int	g_bits32 = 0;
-
-// static char	bit_construct(char base, int bit, int num)
-// {
-// 	return ((bit << num) | base);
-// }
-
-// static int	bit_shift(char base, int calc_num)
-// {
-// 	return ((base >> calc_num) & 1);
-// }
-	// ft_printf("char-%c-int-%d-num-%d-bit%d\n", c, c, i, bit);
 
 static int	make_char(int bit)
 {
@@ -67,12 +56,6 @@ static void	sighandler(int signum)
 		kill(client_id, SIGUSR1 + sig_change);
 	}
 }
-		// usleep(30);
-// void sighandler1(int signum)
-// {
-// 	if (signum == SIGUSR1)
-// 		x++;
-// }
 
 int	main(void)
 {
